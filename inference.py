@@ -21,6 +21,7 @@ from mpl_toolkits.axes_grid1 import make_axes_locatable
 
 from utils import DataFactory
 from upt import build_detector
+import pathlib
 
 warnings.filterwarnings("ignore")
 
@@ -75,6 +76,10 @@ def visualise_entire_image(image, output, actions, action=None, thresh=0.2):
             txt.set_path_effects([peff.withStroke(linewidth=5, foreground='#000000')])
             plt.draw()
         plt.show()
+
+        if args.output_path is not None:
+            plt.savefig(args.output_path)
+
         return
 
     pairing = output['pairing']
@@ -136,6 +141,9 @@ def visualise_entire_image(image, output, actions, action=None, thresh=0.2):
     ax = plt.gca()
     draw_boxes(ax, boxes)
     plt.show()
+
+    if args.output_path is not None:
+        plt.savefig(args.output_path)
 
 @torch.no_grad()
 def main(args):
@@ -219,6 +227,8 @@ if __name__ == "__main__":
         help="Threshold on action classes.")
     parser.add_argument('--image-path', default=None, type=str,
         help="Path to an image file.")
+    parser.add_argument('--output-path', default=None, type=str,
+        help="Path to save the output image.")
     
     args = parser.parse_args()
 
