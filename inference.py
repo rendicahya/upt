@@ -77,7 +77,7 @@ def visualise_entire_image(image, output, actions, action=None, thresh=0.2):
         plt.show()
 
         if args.output_path is not None:
-            plt.savefig(args.output_path)
+            plt.savefig(args.output_path, bbox_inches="tight")
 
         return
 
@@ -142,7 +142,7 @@ def visualise_entire_image(image, output, actions, action=None, thresh=0.2):
     plt.show()
 
     if args.output_path is not None:
-        plt.savefig(args.output_path)
+        plt.savefig(args.output_path, bbox_inches="tight")
 
 @torch.no_grad()
 def main(args):
