@@ -21,7 +21,6 @@ from mpl_toolkits.axes_grid1 import make_axes_locatable
 
 from utils import DataFactory
 from upt import build_detector
-import pathlib
 
 warnings.filterwarnings("ignore")
 
